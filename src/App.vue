@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="container">
+      <nav style="text-align: center" class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="nav-item">
+          <a class="nav-link" href="#">Estudiantes</a>
+        </span>
+        |
+        <span class="nav-item">
+          <a class="nav-link" href="#">Cursos</a>
+        </span>
+      </nav>
+      <mi-alerta
+        v-if="alerta"
+        @ok="alerta = false"
+        @cancelado="alerta = false"
+        titulo="Alerta"
+      >¿Estas seguro que quieres salir?</mi-alerta>
+      <mi-tabla-estudiantes>Datos de estudiantes</mi-tabla-estudiantes>
+      <div style="text-align: center">
+        <button class="btn btn-primary" @click="alerta = true">Salir</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import miAlerta from "@/components/MiAlerta.vue";
+import miTablaEstudiantes from "@/components/MiTablaEstudiantes.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    miAlerta,
+    miTablaEstudiantes
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
